@@ -1,5 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ApiParam } from '@nestjs/swagger';
 
 @Controller('book')
 export class AppController {
@@ -9,6 +10,7 @@ export class AppController {
   getDictionary() {
     return this.appService.getDictionary();
   }
+  @ApiParam({ name: 'id', description: 'Book ID' })
   @Get(':id')
   getBook(@Param() params: any) {
     return this.appService.getBook(params.id);
@@ -29,9 +31,9 @@ export class AppController {
   getVerse(@Param() params:any){
     return this.appService.getVerse(params.bookId, params.chapterId, params.id );
   }
-  @Get(':bookId/chapter/:chapterId/verses/:id')
+  @Get(':bookId/chapter/:chapterId/verses/:idRange')
   getVerses(@Param() params:any){
-    return this.appService.getVerses(params.bookId, params.chapterId, params.id );
+    return this.appService.getVerses(params.bookId, params.chapterId, params.idRange );
   }
 
 }

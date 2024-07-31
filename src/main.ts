@@ -16,7 +16,7 @@ async function bootstrap() {
     .setTitle('Amharic Bible Api')
     .setDescription('Amharic Bible Api Description')
     .setVersion('1.0')
-    .addTag('books')
+    .addTag('Books, Chapters and Verses')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
